@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux';
-import emails from './emails'
+import emails from './emails';
+import notes from './notes'
 
 const rootReducer = combineReducers({
-  emails
+  emails,
+  notes
 })
 
 export default rootReducer

@@ -1,17 +1,20 @@
 import React from 'react';
-import {ButtonGroup, Button, Col, Container, Row} from 'reactstrap'
+import {ButtonGroup, Button, Col, Container, Row} from 'reactstrap';
+import NoteCard from './noteCard'
 
 
 const Eamil = (props) => {
-console.log('Email', props.email)
 
-let {id, from, subject, email, note_attached} = props.email
+let {id, from, subject, email, note_attached, clicked, selected} = props.email
 console.log('note_attached', note_attached)
+
+
+
   return (
     <Container>
       <Row>
         <Col xs="3">
-          <ButtonGroup>
+          <ButtonGroup onClick={e => props.clicked(id)}>
             {note_attached ? <Button>Note Attached</Button> : null}
             <Button>Reply</Button>{' '}
           </ButtonGroup>
@@ -23,6 +26,7 @@ console.log('note_attached', note_attached)
         {subject}
       </Col>
     </Row>
+    {clicked ? <NoteCard id={id}/> : null}
     </Container>
   )
 }

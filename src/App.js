@@ -11,7 +11,6 @@ import {getAllEmails} from './actions/getEmails'
 class App extends Component {
 
 componentDidMount() {
-  console.log('componentDidMount', this.props)
   this.props.getEmails()
 }
 
