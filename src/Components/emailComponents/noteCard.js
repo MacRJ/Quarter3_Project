@@ -1,8 +1,35 @@
 import React from 'react'
-import { Card, Button, CardTitle, CardText, Row, Col, Form, Input } from 'reactstrap';
+import {
+  Card,
+  Button,
+  CardTitle,
+  CardText,
+  Row,
+  Col,
+  Form,
+  Input,
+  ButtonDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem} from 'reactstrap';
 
-const NoteCard = (props) => {
+export default class NoteCard extends React.Component {
+  constructor(props) {
+      super(props);
 
+  this.toggle = this.toggle.bind(this);
+      this.state = {
+        dropdownOpen: false
+      };
+    }
+
+toggle() {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
+  }
+
+render() {
   return (
     <Row>
       <Col sm="6">
@@ -11,19 +38,25 @@ const NoteCard = (props) => {
           <Form action="http://localhost:5000/notes/Create" method="POST">
             <CardText>
               <Input type="textarea" name="note" placeholder="Please Type A Note"/>
-              <Input type="hidden" name="email_id" value={props.emailID}/>
-              <Input type="hidden" name="user_id"  value={props.userID}/>
+              <Input type="hidden" name="email_id" value={this.props.emailID}/>
+              <Input type="hidden" name="user_id"  value={this.props.userID}/>
             </CardText>
             <Button type="submit">Add Note</Button>
           </Form>
         </Card>
       </Col>
       <Col sm="2">
-        <Button>Schedule Reply</Button>
-        <Button>Reply</Button>
+          <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+            <DropdownToggle caret>
+              Delay Reply
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem>4 Hours</DropdownItem>
+              <DropdownItem>6 Hours</DropdownItem>
+            </DropdownMenu>
+        </ButtonDropdown>
       </Col>
     </Row>
   );
 };
-
-export default NoteCard
+}

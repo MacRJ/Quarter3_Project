@@ -1,44 +1,44 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {getAllNotes, deleteNote} from '../actions/getAllNotes';
+import {getAllReplys, deleteReply} from '../actions/reply'
 import {Table, Container, Row, Col, Button, Form, Input, FormGroup} from 'reactstrap';
 import {Link} from 'react-router-dom';
-import {clicked} from '../actions/getEmails';
+import {clicked} from '../actions/getEmails'
+
 
 
 class Notes extends Component {
 
-componentDidMount() {
-  this.props.getAllNotes();
-}
+  componentDidMount() {
+    this.props.getAllReplys()
+  }
 
   render () {
-let {email, from, note, subject, email_id} = this.props.notes
-console.log('notesComponent', this.props.notes)
+console.log('replyComponent', this.props)
 
 
-let theTable = this.props.notes.map((note, i) => {
+let theTable = this.props.replys.map((reply, i) => {
   return <tr key={i}>
     <th scope="row"></th>
-     <Form action="http://localhost:5000/notes/update" method="POST">
+     <Form action="http://localhost:5000/reply/update" method="POST">
        <FormGroup>
           <td>
-            <Input type="textarea" name="text" placeholder={note.note} />
-            <Input type="hidden" name= "id" value={note.id} />
+            <Input type="textarea" name="text" placeholder={reply.replymessage} />
+            <Input type="hidden" name= "id" value={reply.replyid} />
             <Button >Submit</Button>
           </td>
        </FormGroup>
      </Form>
-      <td>{note.from}</td>
-      <td>{note.subject}</td>
+      <td>{reply.subject}</td>
+      <td>{reply.email}</td>
       <td><Link to="/g/email">
           <Button onClick={
               e => {
-              this.props.clicked(note.email_id)}
+              this.props.clicked(reply.email_id)}
               }>Take Me to Email</Button></Link></td>
       <td>
-          <Button onClick={e => this.props.deleteNote(note.notesid)}> Delete Note</Button></td>
+          <Button onClick={e => this.props.deleteReply(reply.replyid)}> Delete Reply</Button></td>
 
 
   </tr>
@@ -53,10 +53,9 @@ let theTable = this.props.notes.map((note, i) => {
             <thead>
               <tr>
                 <th></th>
-                <th>Note</th>
-                <th>From</th>
+                <th>The Reply</th>
                 <th>Subject</th>
-                <th>Reply</th>
+                <th>Eamil</th>
                 <th>Delete</th>
               </tr>
             </thead>
@@ -71,16 +70,16 @@ let theTable = this.props.notes.map((note, i) => {
   }
 }
 function mapStateToProps(state, props){
-
   return {
-    notes: state.notes
+    replys: state.replys
   }
 }
+
 function mapDispatchToProps(dispatch) {
   return {
-    getAllNotes: bindActionCreators(getAllNotes, dispatch),
-    clicked: bindActionCreators(clicked, dispatch),
-    deleteNote: bindActionCreators(deleteNote, dispatch),
+    getAllReplys: bindActionCreators(getAllReplys, dispatch),
+    deleteReply: bindActionCreators(deleteReply, dispatch),
+    clicked: bindActionCreators(clicked, dispatch)
   }
 }
 

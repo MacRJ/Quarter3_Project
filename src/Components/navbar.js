@@ -27,8 +27,6 @@ const cookies = new Cookies();
 let username = cookies.get('user_name');
 
 
-console.log('username',username)
-
     return (
       <div>
         <Nav tabs>
@@ -49,7 +47,7 @@ console.log('username',username)
             <NavLink href="http://localhost:3000/g/notes">Notes</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink disabled >Disabled Link</NavLink>
+            <NavLink href="http://localhost:3000/g/replys">Replys</NavLink>
           </NavItem>
           <Nav className="ml-auto" navbar>
                <NavItem>
