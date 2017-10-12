@@ -1,6 +1,10 @@
 import React from 'react';
 import { Nav, NavItem, NavDropdown, DropdownItem, DropdownToggle, DropdownMenu, NavLink} from 'reactstrap';
 
+
+import Cookies from 'universal-cookie'
+
+
 export default class Example extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +22,13 @@ export default class Example extends React.Component {
   }
 
   render() {
+
+const cookies = new Cookies();
+let username = cookies.get('user_name');
+
+
+console.log('username',username)
+
     return (
       <div>
         <Nav tabs>
@@ -26,21 +37,16 @@ export default class Example extends React.Component {
           </NavItem>
           <NavDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
             <DropdownToggle nav caret>
-              Dropdown
+              Email Actions
             </DropdownToggle>
             <DropdownMenu>
-              <DropdownItem header>Header</DropdownItem>
-              <DropdownItem disabled>Action</DropdownItem>
-              <DropdownItem>Another Action</DropdownItem>
+              <DropdownItem header>Email Functions</DropdownItem>
               <DropdownItem divider />
-              <DropdownItem>Another Action</DropdownItem>
+              <DropdownItem href="http://localhost:3000/g/selected">Selected</DropdownItem>
             </DropdownMenu>
           </NavDropdown>
           <NavItem>
             <NavLink href="http://localhost:3000/g/notes">Notes</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink >Another Link</NavLink>
           </NavItem>
           <NavItem>
             <NavLink disabled >Disabled Link</NavLink>
@@ -48,8 +54,8 @@ export default class Example extends React.Component {
           <Nav className="ml-auto" navbar>
                <NavItem>
                  <span>Hello,  </span>
-                 <span>Rich</span>
-                 <span>  Logout</span>
+                 <span>{username}</span>
+                 <span><a href="http://localhost:5000/logout">   Logout</a></span>
                </NavItem>
           </Nav>
         </Nav>

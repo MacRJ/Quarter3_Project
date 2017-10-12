@@ -2,7 +2,7 @@ import React from 'react';
 import {ButtonGroup, Button, Col, Container, Row, FormGroup, Label, Input} from 'reactstrap';
 import NoteCard from './noteCard'
 
-const Eamil = (props) => {
+const Email = (props) => {
 
   let {
     id,
@@ -14,7 +14,7 @@ const Eamil = (props) => {
     selected,
     user_id
   } = props.email
-  console.log('EmailPropValues', props.email)
+
 
   return (
     <Container>
@@ -39,4 +39,4 @@ const Eamil = (props) => {
     </Container>
   )
 }
-export default Eamil
+export default Email

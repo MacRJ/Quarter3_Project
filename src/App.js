@@ -17,9 +17,7 @@ componentDidMount() {
 
 render() {
   const cookies = new Cookies();
-  cookies.set('myCat', 'PacMan', {path: '/'});
-
-  // {cookies.get('myCat') === 'PacMan' ? <Header /> : null}
+  cookies.set('user_name', 'Rich', {path: '/'});
 
 
     return (

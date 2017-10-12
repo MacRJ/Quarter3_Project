@@ -10,7 +10,7 @@ import {clicked, selected} from '../../actions/getEmails'
 class Emails extends Component {
 
   render () {
-console.log('Emails', this.props)
+
 
     let emailsVar = this.props.emails.map((email, i) => {
       return <Email key={i} email={email} clicked={this.props.clicked} selected={this.props.selected}/>
