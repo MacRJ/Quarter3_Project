@@ -4,6 +4,8 @@ export default(state=[], action) => {
       return [...action.payload.data]
     case 'CLICKED_FULFILLED':
       return [...action.payload.data]
+    case 'SELECTED_FULFILLED':
+      return [...action.payload.data]  
     default:
       return state
 

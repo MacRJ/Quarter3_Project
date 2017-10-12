@@ -1,42 +1,58 @@
 import React from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
-import {NavLink} from 'react-router-dom'
+import { Nav, NavItem, NavDropdown, DropdownItem, DropdownToggle, DropdownMenu, NavLink} from 'reactstrap';
 
-
-
-export default class Header extends React.Component {
+export default class Example extends React.Component {
   constructor(props) {
     super(props);
 
-    this.toggleNavbar = this.toggleNavbar.bind(this);
+    this.toggle = this.toggle.bind(this);
     this.state = {
-      collapsed: true
+      dropdownOpen: false
     };
   }
 
-  toggleNavbar() {
+  toggle() {
     this.setState({
-      collapsed: !this.state.collapsed
+      dropdownOpen: !this.state.dropdownOpen
     });
   }
 
   render() {
     return (
       <div>
-        <Navbar color="faded" light>
-          <NavbarBrand href="/" className="mr-auto">My Email</NavbarBrand>
-          <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-          <Collapse isOpen={!this.state.collapsed} navbar>
-            <Nav navbar>
-              <NavItem>
-                <NavLink to="/g/email">Email</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/g/notes">Notes</NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Navbar>
+        <Nav tabs>
+          <NavItem>
+            <NavLink href="http://localhost:3000/" active>Email </NavLink>
+          </NavItem>
+          <NavDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+            <DropdownToggle nav caret>
+              Dropdown
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem header>Header</DropdownItem>
+              <DropdownItem disabled>Action</DropdownItem>
+              <DropdownItem>Another Action</DropdownItem>
+              <DropdownItem divider />
+              <DropdownItem>Another Action</DropdownItem>
+            </DropdownMenu>
+          </NavDropdown>
+          <NavItem>
+            <NavLink href="http://localhost:3000/g/notes">Notes</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink >Another Link</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink disabled >Disabled Link</NavLink>
+          </NavItem>
+          <Nav className="ml-auto" navbar>
+               <NavItem>
+                 <span>Hello,  </span>
+                 <span>Rich</span>
+                 <span>  Logout</span>
+               </NavItem>
+          </Nav>
+        </Nav>
       </div>
     );
   }

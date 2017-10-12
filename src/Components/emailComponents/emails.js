@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Email from './email';
 import { Container, Row, Col } from 'reactstrap';
-import {clicked} from '../../actions/getEmails'
+import {clicked, selected} from '../../actions/getEmails'
 
 
 
@@ -13,7 +13,7 @@ class Emails extends Component {
 console.log('Emails', this.props)
 
     let emailsVar = this.props.emails.map((email, i) => {
-      return <Email key={i} email={email} clicked={this.props.clicked}/>
+      return <Email key={i} email={email} clicked={this.props.clicked} selected={this.props.selected}/>
     })
 
 
@@ -37,7 +37,8 @@ function mapStateToProps(state, props){
 
 function mapDispatchToProps(dispatch) {
   return{
-    clicked: bindActionCreators(clicked, dispatch)
+    clicked: bindActionCreators(clicked, dispatch),
+    selected: bindActionCreators(selected, dispatch)
   }
 }
 
