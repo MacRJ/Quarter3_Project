@@ -14,14 +14,18 @@ const Email = (props) => {
     selected,
     user_id
   } = props.email
-
+console.log("Eamil", props)
 
   return (
     <Container>
       <Row>
         <Col xs="3">
           <ButtonGroup>
-            <Input type="checkbox" name="selected" onChange={e => props.selected(id)} checked={selected ? "checked" : null} />
+            <Input
+              type="checkbox"
+              name="selected"
+              onChange={e => props.selected(id)}
+              checked={selected ? "checked" : null} />
             <Button onClick={e => props.clicked(id)}>Add Note</Button>
             <Button>Reply</Button>{' '}
           </ButtonGroup>
@@ -35,7 +39,10 @@ const Email = (props) => {
           </div>
         </Col>
       </Row>
-      {clicked ? <NoteCard emailID={id} userID={user_id}/>: null}
+      {clicked ? <NoteCard
+        emailID={id}
+        userID={user_id}
+        addTime={props.addTime(id)}/>: null}
     </Container>
   )
 }

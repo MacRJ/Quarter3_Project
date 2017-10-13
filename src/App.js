@@ -16,8 +16,8 @@ componentDidMount() {
 
 
 render() {
-  const cookies = new Cookies();
-  cookies.set('user_name', 'Rich', {path: '/'});
+  // const cookies = new Cookies();
+  // cookies.set('user_name', 'Rich', {path: '/'});
 
 
     return (

@@ -30,6 +30,7 @@ toggle() {
   }
 
 render() {
+console.log('NoteCard', this.props)
   return (
     <Row>
       <Col sm="6">
@@ -51,8 +52,12 @@ render() {
               Delay Reply
             </DropdownToggle>
             <DropdownMenu>
-              <DropdownItem>4 Hours</DropdownItem>
-              <DropdownItem>6 Hours</DropdownItem>
+              <DropdownItem
+                onChange={e => {this.addTime(2)}}>2 Hours</DropdownItem>
+              <DropdownItem
+                onChange={e => {this.addTime(4)}}>4 Hours</DropdownItem>
+              <DropdownItem
+                onChange={e => {this.addTime(6)}}>6 Hours</DropdownItem>
             </DropdownMenu>
         </ButtonDropdown>
       </Col>
