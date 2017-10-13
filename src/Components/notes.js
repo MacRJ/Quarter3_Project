@@ -25,7 +25,7 @@ let theTable = this.props.notes.map((note, i) => {
        <FormGroup>
           <td>
             <Input type="textarea" name="text" placeholder={note.note} />
-            <Input type="hidden" name= "id" value={note.id} />
+            <Input type="hidden" name= "id" value={note.notesid} />
             <Button >Submit</Button>
           </td>
        </FormGroup>

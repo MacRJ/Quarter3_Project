@@ -15,10 +15,11 @@ export const deleteReply = (id) => {
   }
 }
 
-export const addTime = (time) => {
-  console.log('Time')
+export const addTime = (time, id) => {
+  console.log('Time', time)
+  console.log('id', id)
   return {
     type: "ADD_TIME",
-    payload: axios.post(`http://localhost:5000/reply/time/${time}`)
+    payload: axios.post(`http://localhost:5000/reply/time/${id}/${time}`)
   }
 }

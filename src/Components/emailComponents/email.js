@@ -41,8 +41,7 @@ console.log("Eamil", props)
       </Row>
       {clicked ? <NoteCard
         emailID={id}
-        userID={user_id}
-        addTime={props.addTime(id)}/>: null}
+        userID={user_id}/>: null}
     </Container>
   )
 }

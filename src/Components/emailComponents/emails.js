@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux';
 import Email from './email';
 import { Container, Row, Col } from 'reactstrap';
 import {clicked, selected} from '../../actions/getEmails';
-import {addTime} from '../../actions/reply'
 
 
 
@@ -20,8 +19,7 @@ class Emails extends Component {
         key={i}
         email={email}
         clicked={this.props.clicked}
-        selected={this.props.selected}
-        addTime={this.props.addTime}/>
+        selected={this.props.selected}/>
     })
 
 
@@ -47,7 +45,6 @@ function mapDispatchToProps(dispatch) {
   return{
     clicked: bindActionCreators(clicked, dispatch),
     selected: bindActionCreators(selected, dispatch),
-    addTime: bindActionCreators(addTime, dispatch)
 
   }
 }

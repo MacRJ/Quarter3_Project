@@ -53,11 +53,11 @@ console.log('NoteCard', this.props)
             </DropdownToggle>
             <DropdownMenu>
               <DropdownItem
-                onChange={e => {this.addTime(2)}}>2 Hours</DropdownItem>
+                onChange={e => console.log('2 heard')}>2 Hours</DropdownItem>
               <DropdownItem
-                onChange={e => {this.addTime(4)}}>4 Hours</DropdownItem>
+                onChange={e => console.log('4 heard')}>4 Hours</DropdownItem>
               <DropdownItem
-                onChange={e => {this.addTime(6)}}>6 Hours</DropdownItem>
+                onChange={e => console.log('6 Heard')}>6 Hours</DropdownItem>
             </DropdownMenu>
         </ButtonDropdown>
       </Col>
